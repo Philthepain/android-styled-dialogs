@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Android-styled-dialogs by Philthepain</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Android-styled-dialogs</h1>
+        <p>Backport of Material dialogs with easy-to-use API based on DialogFragment</p>
+
+        <p class="view"><a href="https://github.com/Philthepain/android-styled-dialogs">View the Project on GitHub <small>Philthepain/android-styled-dialogs</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/Philthepain/android-styled-dialogs/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Philthepain/android-styled-dialogs/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Philthepain/android-styled-dialogs">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="styleddialogs-for-android" class="anchor" href="#styleddialogs-for-android" aria-hidden="true"><span class="octicon octicon-link"></span></a>StyledDialogs for Android</h1>
+
+<p><a href="https://travis-ci.org/avast/android-styled-dialogs"><img src="https://travis-ci.org/avast/android-styled-dialogs.svg?branch=master" alt="Build Status"></a> <a href="https://github.com/avast/android-styled-dialogs/blob/master/LICENSE.txt"><img src="https://img.shields.io/badge/license-Apache%202-green.svg?style=flat" alt="License"></a> <a href="https://android-arsenal.com/details/1/143"><img src="https://img.shields.io/badge/Android%20Arsenal-StyledDialogs-green.svg?style=flat" alt="Android Arsenal"></a> </p>
+
+<p><img src="graphics/screenshot-small.png" alt="Screenshot of the dialogs"></p>
+
+<p>Demo app:</p>
+
+<p><a href="https://play.google.com/store/apps/details?id=com.avast.dialogs"><img src="http://www.android.com/images/brand/get_it_on_play_logo_small.png" alt="Get it on Google Play"></a></p>
+
+<p>Features:</p>
+
+<ul>
+<li>Compatible with <strong>Material Design Guidelines</strong>
+</li>
+<li>Same look for <strong>Android 2.2+</strong>
+</li>
+<li>Built on top of standard <strong>DialogFragment</strong>
+</li>
+<li>Supports stacked buttons, neutral button, callbacks even after rotation</li>
+<li>Light and dark theme</li>
+<li>Contains even more specialized dialogs: List, Progress, Time&amp;Date Picker, Custom, ...</li>
+</ul>
+
+<h2>
+<a id="how-to-include-it-in-your-project" class="anchor" href="#how-to-include-it-in-your-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to include it in your project:</h2>
+
+<div class="highlight highlight-source-groovy"><pre>dependencies {
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.avast:android-styled-dialogs:2.2.0<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<p>Hosted in <a href="https://bintray.com/avast/android/styled-dialogs/">jcenter</a>: <a href="https://bintray.com/avast/android/styled-dialogs/_latestVersion"> <img src="https://api.bintray.com/packages/avast/android/styled-dialogs/images/download.svg" alt="Download"> </a></p>
+
+<p><a href="https://github.com/inmite/android-styled-dialogs/tree/holo">Looking for Holo dialogs?</a></p>
+
+<h2>
+<a id="how-to-style-all-dialogs" class="anchor" href="#how-to-style-all-dialogs" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to style all dialogs:</h2>
+
+<p>It uses standard Material colors, for example like this:</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">style</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>AppTheme<span class="pl-pds">"</span></span> <span class="pl-e">parent</span>=<span class="pl-s"><span class="pl-pds">"</span>Theme.AppCompat.Light.DarkActionBar<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>colorPrimary<span class="pl-pds">"</span></span>&gt;@color/indigo&lt;/<span class="pl-ent">item</span>&gt;
+        &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>colorPrimaryDark<span class="pl-pds">"</span></span>&gt;@color/indigo_dark&lt;/<span class="pl-ent">item</span>&gt;
+        &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>colorAccent<span class="pl-pds">"</span></span>&gt;@color/pink&lt;/<span class="pl-ent">item</span>&gt;
+&lt;/<span class="pl-ent">style</span>&gt;</pre></div>
+
+<p>For dark theme, inherit from <code>Theme.AppCompat</code>. Or you can force dark theme per individual dialog using <code>useDarkTheme()</code> builder method.
+You can also force light theme per individual dialog using <code>useLightTheme()</code> builder method.</p>
+
+<h2>
+<a id="how-to-create-simple-dialogs" class="anchor" href="#how-to-create-simple-dialogs" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to create simple dialogs:</h2>
+
+<p>Easy:</p>
+
+<h3>
+<a id="dialog-with-a-simple-message-only" class="anchor" href="#dialog-with-a-simple-message-only" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dialog with a simple message only:</h3>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">SimpleDialogFragment</span><span class="pl-k">.</span>createBuilder(<span class="pl-v">this</span>, getSupportFragmentManager())<span class="pl-k">.</span>setMessage(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>message)<span class="pl-k">.</span>show();</pre></div>
+
+<h3>
+<a id="dialog-with-a-title-message-and-two-buttons" class="anchor" href="#dialog-with-a-title-message-and-two-buttons" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dialog with a title, message and two buttons:</h3>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">SimpleDialogFragment</span><span class="pl-k">.</span>createBuilder(<span class="pl-v">this</span>, getSupportFragmentManager())<span class="pl-k">.</span>setTitle(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>title)<span class="pl-k">.</span>setMessage(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>message)<span class="pl-k">.</span>setPositiveButtonText(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>positive_button)<span class="pl-k">.</span>setNegativeButtonText(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>negative_button)<span class="pl-k">.</span>show();</pre></div>
+
+<h3>
+<a id="how-to-react-on-button-press-in-your-activityfragment" class="anchor" href="#how-to-react-on-button-press-in-your-activityfragment" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to react on button press in your Activity/Fragment:</h3>
+
+<p>Simply implement interface <code>ISimpleDialogListener</code> in your Activity/Fragment. Listener's callbacks have <code>requestCode</code> parameter - you can use it if you have more dialogs in one Activity/Fragment.</p>
+
+<p>For Fragments use <code>setTargetFragment()</code> method in the builder.</p>
+
+<p>It's not possible to use normal Java callbacks, because they are lost after device rotation.</p>
+
+<h3>
+<a id="how-to-react-on-cancelling-the-dialog" class="anchor" href="#how-to-react-on-cancelling-the-dialog" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to react on cancelling the dialog:</h3>
+
+<p>Implement interface <code>ISimpleDialogCancelListener</code> in your Activity/Fragment.</p>
+
+<h2>
+<a id="how-to-create-custom-dialogfragments" class="anchor" href="#how-to-create-custom-dialogfragments" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to create custom DialogFragments:</h2>
+
+<p>Extend <code>BaseDialogFragment</code>. </p>
+
+<p>Have a look at <a href="https://github.com/avast/android-styled-dialogs/blob/master/demo/src/main/java/com/avast/dialogs/JayneHatDialogFragment.java">JayneHatDialogFragment</a> for a practical example.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Pull requests are welcomed!</p>
+
+<p>Please set your Android Studio formatting to <a href="https://github.com/avast/android-styled-dialogs/blob/master/code-formatting-config.xml">our code style</a>.</p>
+
+<h2>
+<a id="why-dialogs" class="anchor" href="#why-dialogs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why 'Dialogs'?</h2>
+
+<p><img src="http://img.radio.cz/pictures/osobnosti/cimrman_jarax.jpg" width="70" align="right"></p>
+
+<p>Theodor Dialogs was a famous Czech painter, uncle of <a href="http://en.wikipedia.org/wiki/J%C3%A1ra_Cimrman">Jára Cimrman</a>. Jára Cimrman was a playwright, philosopher, inventor, teacher, poet, mathematician and more but he lacked painting skills. That's why Theodor was helping him with many projects. Just like Android and this library do.</p>
+
+<p>See <a href="http://inmite.github.io"><strong>our other Czech personalities</strong></a> who help with <a href="https://plus.google.com/s/%23AndroidDev">#AndroidDev</a>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/Philthepain">Philthepain</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
